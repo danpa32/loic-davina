@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loïc & Davina</title>
+<meta name="description" content="Save the date — Loïc & Davina se marient">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======= Écran 1 : enveloppe ======= -->
+<section class="stage" id="stage">
+  <h1 class="headline" aria-label="Une célébration se prépare !"><span>Une célébration</span><span>se prépare!</span></h1>
+
+  <div class="envelope-wrap" id="wrap">
+    <div class="bouquet tl" data-bouquet="1"></div>
+
+    <button class="envelope" id="envelope" aria-label="Ouvrir l'enveloppe">
+      <div class="env-layer env-back paper"></div>
+      <div class="mini-card">
+        <div class="ph" id="miniPhoto"></div>
+        <div class="txt"><small>Save the date</small><b>Loïc &amp; Davina</b></div>
+      </div>
+      <div class="env-layer env-front paper"></div>
+      <div class="env-layer flap paper"></div>
+      <div class="seal"><span>LD</span></div>
+    </button>
+
+    <div class="bouquet br" data-bouquet="2"></div>
+  </div>
+
+  <button class="cta" id="cta">Cliquez pour ouvrir…</button>
+</section>
+
+<!-- ======= Écran 2 : le save the date ======= -->
+<main class="invite" id="invite">
+  <article class="card">
+    <div class="bouquet tl" data-bouquet="3"></div>
+
+    <div class="photo reveal" id="photo">
+      <img src="photo.jpg" alt="Loïc et Davina" onerror="this.parentNode.classList.add('no-photo')">
+      <div class="missing">Ajoutez votre photo :<br>photo.jpg</div>
+    </div>
+
+    <p class="eyebrow reveal">Réservez la date</p>
+    <h2 class="std reveal">Save the date</h2>
+    <p class="names reveal">Loïc <em>&amp;</em> Davina</p>
+    <p class="sub reveal">se marient</p>
+
+    <div class="reveal">
+      <hr class="rule">
+      <p class="date" id="dateText"></p>
+      <p class="place" id="placeText"></p>
+    </div>
+
+    <div class="countdown reveal" id="countdown" aria-live="off">
+      <div><b data-k="d">0</b><small>Jours</small></div>
+      <div><b data-k="h">0</b><small>Heures</small></div>
+      <div><b data-k="m">0</b><small>Min</small></div>
+      <div><b data-k="s">0</b><small>Sec</small></div>
+    </div>
+
+    <div class="reveal">
+      <p class="follow">Faire-part officiel à suivre</p>
+      <button class="btn" id="calBtn">Ajouter au calendrier</button>
+    </div>
+
+    <div class="bouquet br" data-bouquet="4"></div>
+  </article>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
