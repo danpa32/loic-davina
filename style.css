@@ -294,8 +294,15 @@ body.opened { overflow-y: auto; }
   color: var(--ink); background: transparent;
   border: 1px solid var(--ink); padding: 14px 22px; cursor: pointer;
   transition: background .3s, color .3s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
-.btn:hover { background: var(--ink); color: var(--card); }
+/* survol seulement avec une souris : sur mobile il resterait « collé » après le toucher */
+@media (hover: hover) {
+  .btn:hover { background: var(--ink); color: var(--card); }
+}
+.btn:active { background: var(--ink); color: var(--card); }
 
 /* pétales qui tombent à l'ouverture */
 .petal {
