@@ -255,9 +255,6 @@ body.opened { overflow-y: auto; }
 .photo.no-photo .missing { display: grid; }
 .photo.no-photo img { display: none; }
 
-.eyebrow {
-  font-size: 14px; letter-spacing: .38em; text-transform: uppercase; color: var(--ink-soft);
-}
 .std {
   font-family: "Mrs Saint Delafield", cursive;
   font-size: clamp(58px, 15vw, 84px);
@@ -276,16 +273,18 @@ body.opened { overflow-y: auto; }
 /* « — se diront OUI le — » encadré de deux filets qui s'estompent */
 .sub {
   display: flex; align-items: center; justify-content: center; gap: 14px;
-  font-style: italic; font-size: 26px; color: var(--ink-soft);
+  font-style: italic; font-size: clamp(20px, 6vw, 26px); color: var(--ink-soft);
 }
+/* la phrase reste sur une seule ligne, ce sont les filets qui rétrécissent */
+.sub .vow-text { white-space: nowrap; }
 .sub::before, .sub::after {
-  content: ""; flex: 0 1 46px; height: 1px;
+  content: ""; flex: 0 1 46px; min-width: 14px; height: 1px;
   background: linear-gradient(to right, transparent, var(--sage));
 }
 .sub::after { background: linear-gradient(to left, transparent, var(--sage)); }
 .sub .oui {
   font-style: normal; font-weight: 600; font-size: 1.3em;
-  letter-spacing: .16em; margin-right: -.16em; /* compense l'espacement après le I */
+  letter-spacing: .16em;
   color: var(--ink);
 }
 .date {
@@ -336,4 +335,13 @@ body.opened { overflow-y: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+
+/* petits écrans : la date et le bouton tiennent sur une seule ligne */
+@media (max-width: 420px) {
+  .date { font-size: 18px; letter-spacing: .14em; padding-left: calc(4px + .14em); white-space: nowrap; }
+  .btn { letter-spacing: .16em; padding: 14px 16px; white-space: nowrap; }
+}
+@media (max-width: 340px) {
+  .btn { letter-spacing: .1em; padding: 14px 12px; }
 }
