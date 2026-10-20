@@ -282,9 +282,10 @@ body.opened { overflow-y: auto; }
   background: linear-gradient(to right, transparent, var(--sage));
 }
 .sub::after { background: linear-gradient(to left, transparent, var(--sage)); }
+/* capitales à la hauteur des hampes de l'italique (d, l, t) pour rester dans la ligne */
 .sub .oui {
-  font-style: normal; font-weight: 600; font-size: 1.3em;
-  letter-spacing: .16em;
+  font-style: normal; font-weight: 600; font-size: 1.04em;
+  letter-spacing: .08em; margin: 0 .04em 0 .12em;
   color: var(--ink);
 }
 .date {
