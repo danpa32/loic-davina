@@ -285,7 +285,7 @@ body.opened { overflow-y: auto; }
 /* capitales à la hauteur des hampes de l'italique (d, l, t) pour rester dans la ligne */
 .sub .oui {
   font-style: normal; font-weight: 600; font-size: 1.04em;
-  letter-spacing: .08em; margin: 0 .04em 0 .12em;
+  letter-spacing: .08em; margin: 0 .01em 0 .15em; /* espaces mesurés égaux de chaque côté */
   color: var(--ink);
 }
 .date {
