@@ -272,10 +272,28 @@ body.opened { overflow-y: auto; }
   line-height: 1.1;
 }
 .names em { font-style: normal; font-family: "Cormorant Garamond", serif; font-size: .6em; padding: 0 .2em; color: var(--sage); }
-.sub { font-style: italic; font-size: 26px; color: var(--ink-soft); margin-top: 4px; }
-.sub .oui { font-style: normal; font-weight: 600; letter-spacing: .12em; color: var(--ink); }
-.rule { width: 60px; height: 1px; background: var(--line); margin: 26px auto; border: 0; }
+.vow { margin-top: 18px; }
+/* « — se diront OUI le — » encadré de deux filets qui s'estompent */
+.sub {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  font-style: italic; font-size: 26px; color: var(--ink-soft);
+}
+.sub::before, .sub::after {
+  content: ""; flex: 0 1 46px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--sage));
+}
+.sub::after { background: linear-gradient(to left, transparent, var(--sage)); }
+.sub .oui {
+  font-style: normal; font-weight: 600; font-size: 1.3em;
+  letter-spacing: .16em; margin-right: -.16em; /* compense l'espacement après le I */
+  color: var(--ink);
+}
 .date {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 14px 4px 14px calc(4px + .22em); /* compense l'espacement après la dernière lettre */
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   font-size: clamp(20px, 5.5vw, 26px);
   font-weight: 600;
   letter-spacing: .22em;

@@ -8,7 +8,8 @@ const WEDDING = {
 
 const when = new Date(WEDDING.date);
 const fmt = new Intl.DateTimeFormat("fr-CH", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-document.getElementById("dateText").textContent = fmt.format(when);
+// « samedi 12 juin 2027 » sans la virgule, pour suivre « se diront OUI le »
+document.getElementById("dateText").textContent = fmt.format(when).replace(",", "");
 const placeText = document.getElementById("placeText");
 if (WEDDING.place) placeText.textContent = WEDDING.place;
 else placeText.remove();
