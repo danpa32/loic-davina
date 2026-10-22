@@ -2,7 +2,7 @@
 const WEDDING = {
   date: "2027-06-12T14:00:00",       // date et heure de la cérémonie
   place: "",                        // lieu (vide = masqué), ex. "Aubonne, Suisse"
-  photo: "photo.jpeg"
+  photo: "photo.jpeg?v=2"
 };
 /* ========================================= */
 
