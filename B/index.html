@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Loïc & Davina · La Guinguette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blanc: #FAF7F2; --lin: #EDE3D3; --olive: #6B7042; --terra: #C4683F; --terra-clair: #E3A27F; --brun: #4A3426;
+    --titre: 'Fraunces', Georgia, serif; --texte: 'DM Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--lin); color: var(--brun); font-family: var(--texte); line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; }
+  .demo { background: var(--brun); color: var(--lin); text-align: center; font-size: .8rem; padding: .4rem 1rem; }
+
+  /* Rayures d'auvent et fanions */
+  .auvent { height: 34px; background: repeating-linear-gradient(90deg, var(--terra) 0 40px, var(--blanc) 40px 80px);
+            -webkit-mask: radial-gradient(circle at 20px 34px, transparent 19px, #000 20px) 0 0 / 40px 34px;
+                    mask: radial-gradient(circle at 20px 34px, transparent 19px, #000 20px) 0 0 / 40px 34px; }
+  .fanions { height: 40px; background:
+      linear-gradient(135deg, var(--olive) 25%, transparent 25%) 0 0 / 60px 40px,
+      linear-gradient(225deg, var(--olive) 25%, transparent 25%) 0 0 / 60px 40px; position: relative; }
+  .fanions.terra { background:
+      linear-gradient(135deg, var(--terra) 25%, transparent 25%) 0 0 / 60px 40px,
+      linear-gradient(225deg, var(--terra) 25%, transparent 25%) 0 0 / 60px 40px; }
+
+  nav { position: sticky; top: 0; z-index: 10; background: var(--olive); display: flex; justify-content: center; flex-wrap: wrap; gap: .2rem 1.5rem; padding: .8rem 1rem; }
+  nav a { text-decoration: none; color: var(--blanc); font-weight: 700; font-size: .9rem; }
+  nav a:hover { color: var(--terra-clair); }
+
+  section { padding: 5.5rem 1.5rem; }
+  .inner { max-width: 1000px; margin: 0 auto; }
+  h1, h2, h3 { font-family: var(--titre); line-height: 1.05; }
+  h2 { font-size: clamp(2.6rem, 7vw, 4.5rem); font-weight: 900; margin-bottom: 1rem; }
+  h2 em { font-weight: 400; color: var(--terra); }
+  h3 { font-size: 1.6rem; font-weight: 700; }
+  .clin { font-family: var(--titre); font-style: italic; font-weight: 700; color: var(--terra); font-size: 1.3rem; }
+  .psst { display: inline-block; background: var(--blanc); border: 2px dashed var(--terra); border-radius: 999px; padding: .4rem 1.1rem; font-size: .9rem; margin-top: 1.5rem; transform: rotate(-2deg); }
+  .bouton { display: inline-block; margin-top: 1.4rem; padding: .9rem 2rem; background: var(--terra); color: var(--blanc); border: none; border-radius: 999px;
+            font: 700 1rem var(--texte); text-decoration: none; cursor: pointer; transition: transform .15s; box-shadow: 0 4px 0 var(--brun); }
+  .bouton:hover { transform: translateY(-2px) rotate(-1deg); }
+  .bouton.olive { background: var(--olive); }
+
+  /* Accueil */
+  #accueil { background: var(--blanc); text-align: center; padding: 0 1.5rem 5rem; }
+  .lampions { display: flex; justify-content: center; gap: clamp(1rem, 6vw, 4rem); padding-top: 1rem; }
+  .lampion { width: 34px; height: 44px; border-radius: 50%; background: var(--terra-clair); box-shadow: 0 0 30px 8px rgba(227,162,127,.55); position: relative; animation: balance 3s ease-in-out infinite; transform-origin: top center; }
+  .lampion::before { content: ''; position: absolute; left: 50%; top: -40px; width: 1px; height: 40px; background: var(--brun); }
+  .lampion:nth-child(even) { background: var(--olive); box-shadow: 0 0 30px 8px rgba(107,112,66,.35); animation-delay: -1.5s; margin-top: 1.5rem; }
+  @keyframes balance { 50% { transform: rotate(6deg); } }
+  #accueil .salut { font-family: var(--titre); font-style: italic; font-size: 1.5rem; color: var(--olive); margin-top: 3rem; }
+  #accueil h1 { font-size: clamp(3.5rem, 13vw, 7.5rem); font-weight: 900; color: var(--terra); margin: .3rem 0; }
+  #accueil h1 span { font-style: italic; font-weight: 400; color: var(--olive); }
+  #accueil .date { font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
+  #accueil .clin { margin-top: 1.5rem; }
+
+  /* Mariés */
+  .hero-photo { height: 340px; border-radius: 24px; background: linear-gradient(135deg, var(--terra-clair), var(--terra) 60%, var(--olive));
+                display: grid; place-items: center; color: var(--blanc); font-weight: 700; margin: 2rem 0 3rem; }
+  .chapitres { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .chap { padding: 2rem; border-radius: 20px; }
+  .chap:nth-child(1) { background: var(--olive); color: var(--blanc); }
+  .chap:nth-child(2) { background: var(--blanc); }
+  .chap:nth-child(3) { background: var(--terra); color: var(--blanc); }
+  .chap small { font-weight: 700; letter-spacing: .15em; text-transform: uppercase; opacity: .8; }
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .vs > div { background: var(--blanc); border-radius: 20px; padding: 2rem; }
+  .vs ol { padding-left: 1.2rem; margin-top: .8rem; }
+
+  /* Lieux */
+  #lieux { background: var(--blanc); }
+  .carte-voyage { background: var(--lin); border-radius: 24px; padding: 3rem 2rem; margin-top: 2rem; display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; }
+  .trajet { width: 120px; height: 4px; background: repeating-linear-gradient(90deg, var(--terra) 0 10px, transparent 10px 18px); }
+  .etape { background: var(--blanc); border-radius: 20px; padding: 1.6rem; border: 3px solid var(--olive); }
+  .etape .h { font-family: var(--titre); font-size: 2.4rem; font-weight: 900; color: var(--terra); }
+  .secret { margin-top: 2.5rem; text-align: center; }
+  .secret input { padding: .8rem 1.2rem; border-radius: 999px; border: 2px solid var(--olive); font: inherit; text-transform: uppercase; text-align: center; background: var(--blanc); }
+  #diner { display: none; margin-top: 1.5rem; background: var(--olive); color: var(--blanc); border-radius: 24px; padding: 2rem; text-align: center; }
+
+  /* Programme */
+  #programme { background: var(--olive); color: var(--blanc); }
+  #programme h2 em { color: var(--terra-clair); }
+  .affiche { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .affiche div { background: var(--lin); color: var(--brun); border-radius: 20px; padding: 1.5rem; transition: transform .2s; }
+  .affiche div:nth-child(even) { background: var(--terra); color: var(--blanc); transform: rotate(1.5deg); }
+  .affiche div:hover { transform: rotate(-2deg) scale(1.03); }
+  .affiche b { font-family: var(--titre); font-size: 2.6rem; font-weight: 900; display: block; }
+
+  /* Contacts */
+  .equipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .membre { background: var(--blanc); border-radius: 20px; padding: 1.8rem; text-align: center; }
+  .membre:nth-child(2) { transform: translateY(1.5rem); }
+  .avatar { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; background: var(--terra-clair); border: 4px solid var(--olive); }
+  .role { display: inline-block; background: var(--lin); border-radius: 999px; padding: .2rem .8rem; font-size: .8rem; font-weight: 700; margin: .4rem 0; }
+  .faq { margin-top: 4rem; display: grid; gap: .8rem; }
+  .faq details { background: var(--blanc); border-radius: 16px; padding: 1rem 1.4rem; }
+  .faq summary { cursor: pointer; font-weight: 700; }
+
+  /* Cadeaux & apéro */
+  #cadeaux { background: var(--blanc); }
+  .projets { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .projet { border-radius: 20px; padding: 2rem; background: var(--lin); }
+  .projet .ico { font-size: 2.4rem; }
+  .buffet { margin-top: 3rem; background: var(--terra); color: var(--blanc); border-radius: 24px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+  .buffet ul { list-style: none; display: grid; gap: .6rem; }
+  .buffet li { background: rgba(255,255,255,.15); border-radius: 999px; padding: .5rem 1rem; display: flex; justify-content: space-between; }
+
+  /* RSVP */
+  #rsvp { background: var(--terra); color: var(--blanc); text-align: center; position: relative; overflow: hidden; }
+  .form-card { max-width: 540px; margin: 2rem auto 0; background: var(--blanc); color: var(--brun); border-radius: 28px; padding: 2.5rem; text-align: left; }
+  .etapes-ind { display: flex; gap: .5rem; justify-content: center; margin-bottom: 1.5rem; }
+  .etapes-ind i { width: 30px; height: 6px; border-radius: 3px; background: var(--lin); }
+  .etapes-ind i.on { background: var(--terra); }
+  .step { display: none; }
+  .step.on { display: block; }
+  .step h3 { margin-bottom: 1rem; }
+  .step input, .step select { width: 100%; padding: .9rem 1rem; border-radius: 14px; border: 2px solid var(--lin); font: inherit; background: #fff; }
+  .choix { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .choix button { padding: 1.4rem 1rem; border-radius: 18px; border: 2px solid var(--olive); background: #fff; font: 700 1.1rem var(--titre); cursor: pointer; color: var(--brun); }
+  .choix button:hover { background: var(--olive); color: var(--blanc); }
+  .confetti { position: absolute; width: 10px; height: 14px; top: -20px; animation: tombe linear forwards; pointer-events: none; }
+  @keyframes tombe { to { transform: translateY(110vh) rotate(720deg); } }
+
+  footer { text-align: center; padding: 2.5rem 1rem; background: var(--brun); color: var(--lin); font-family: var(--titre); font-style: italic; font-size: 1.2rem; }
+
+  @media (max-width: 700px) {
+    section { padding: 4rem 1rem; }
+    .vs, .buffet, .choix { grid-template-columns: 1fr; }
+    .carte-voyage { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+    .trajet { width: 4px; height: 50px; margin: 0 auto; background: repeating-linear-gradient(180deg, var(--terra) 0 10px, transparent 10px 18px); }
+    .membre:nth-child(2) { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="demo">Maquette B · « La Guinguette » · textes et lieux fictifs</div>
+
+<nav>
+  <a href="#maries">Les tourtereaux</a><a href="#lieux">Les lieux</a><a href="#programme">Programme</a>
+  <a href="#contacts">Les complices</a><a href="#cadeaux">Cadeaux & apéro</a><a href="#rsvp">RSVP</a>
+</nav>
+
+<section id="accueil">
+  <div class="lampions"><i class="lampion"></i><i class="lampion"></i><i class="lampion"></i><i class="lampion"></i><i class="lampion"></i></div>
+  <p class="salut">Sortez les guirlandes,</p>
+  <h1>Loïc <span>&amp;</span> Davina</h1>
+  <p class="date">se marient · Juin 2027</p>
+  <p class="clin">Ils se sont dit oui. Pour le reste, ça ne vous regarde pas.</p>
+</section>
+<div class="auvent"></div>
+
+<section id="maries">
+  <div class="inner">
+    <p class="clin">Les tourtereaux</p>
+    <h2>Notre histoire, <em>version censurée</em></h2>
+    <div class="hero-photo">Grande photo du couple</div>
+    <div class="chapitres">
+      <div class="chap"><small>Acte I · 2018</small><h3>La rencontre</h3><p>Une fête d'été, une playlist douteuse, et un regard qui a duré un peu trop longtemps pour être innocent.</p></div>
+      <div class="chap"><small>Acte II · 2021</small><h3>La vie à deux</h3><p>Un appartement, un olivier en pot, et des dimanches au lit dont nous ne donnerons pas les détails.</p></div>
+      <div class="chap"><small>Acte III · 2026</small><h3>La demande</h3><p>Il avait tout prévu. Sauf de pleurer avant elle.</p></div>
+    </div>
+    <div class="vs">
+      <div><h3>5 choses à savoir sur Loïc</h3><ol><li>Il prétend danser comme un dieu. Nous avons des vidéos.</li><li>Il a toujours une blague de trop. Toujours.</li><li>…</li><li>…</li><li>…</li></ol></div>
+      <div><h3>5 choses à savoir sur Davina</h3><ol><li>Elle a toujours le dernier mot (et le meilleur)</li><li>Un regard d'elle, et Loïc range la vaisselle</li><li>…</li><li>…</li><li>…</li></ol></div>
+    </div>
+    <p class="psst">Psst… qui a fait le premier pas ? Ils ne sont toujours pas d'accord.</p>
+  </div>
+</section>
+
+<section id="lieux">
+  <div class="inner">
+    <p class="clin">Rendez-vous</p>
+    <h2>Les lieux</h2>
+    <div class="carte-voyage">
+      <div class="etape"><small>CÉRÉMONIE</small><div class="h">14h30</div><h3>Chapelle des Vignes</h3><p>Chemin de l'Exemple 1, 1000 Quelque-Part</p><a class="bouton olive" href="#">Itinéraire</a></div>
+      <div class="trajet"></div>
+      <div class="etape"><small>APÉRO</small><div class="h">17h00</div><h3>Jardin du Domaine</h3><p>Route des Oliviers 12, 1000 Quelque-Part</p><a class="bouton olive" href="#">Itinéraire</a></div>
+    </div>
+    <p style="margin-top:1rem;text-align:center">Covoiturage et navettes : infos à venir.</p>
+    <div class="secret">
+      <h3>Invité·e au dîner ?</h3>
+      <p>Entrez le code de votre faire-part (démo : <b>OLIVE</b>)</p>
+      <input id="code" placeholder="Code" aria-label="Code du faire-part"> <button class="bouton" onclick="verifier()">Entrer</button>
+      <div id="diner"><p class="clin" style="color:var(--terra-clair)">Bienvenue à la table des privilégiés</p><h3>19h30 · La Grange aux Oliviers</h3><p>Chemin Secret 3, 1000 Quelque-Part</p></div>
+    </div>
+  </div>
+</section>
+<div class="fanions"></div>
+
+<section id="programme">
+  <div class="inner">
+    <h2>Le programme <em>(officiel)</em></h2>
+    <div class="affiche">
+      <div><b>14h30</b>Le grand « oui »</div>
+      <div><b>16h00</b>Photos et embrassades</div>
+      <div><b>17h00</b>Apéro au jardin</div>
+      <div><b>19h30</b>Dîner et discours (gênants)</div>
+      <div><b>22h00</b>Ouverture du bal</div>
+      <div><b>01h00</b>Ce qui se passe sur la piste reste sur la piste</div>
+    </div>
+    <p style="margin-top:2rem">Code vestimentaire : chic d'été. Vous aurez le droit de tomber la veste après minuit.</p>
+    <p style="margin-top:.5rem">🎵 Ajoutez votre chanson à la <a href="#">playlist collaborative</a> : même la plus inavouable.</p>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="inner">
+    <p class="clin">Les complices</p>
+    <h2>Une question ? <em>Ils ont la réponse</em></h2>
+    <div class="equipe">
+      <div class="membre"><div class="avatar"></div><h3>Prénom Nom</h3><span class="role">Maître de cérémonie</span><p>079 000 00 00</p></div>
+      <div class="membre"><div class="avatar"></div><h3>Prénom Nom</h3><span class="role">Responsable de l'ambiance</span><p>079 000 00 00</p></div>
+      <div class="membre"><div class="avatar"></div><h3>Prénom Nom</h3><span class="role">Témoin & gardienne des secrets</span><p>079 000 00 00</p></div>
+    </div>
+    <div class="faq">
+      <details><summary>Peut-on raconter des anecdotes sur les mariés ?</summary><p>Oui. Passez d'abord par le maître de cérémonie : il trie entre les drôles et les compromettantes.</p></details>
+      <details><summary>Les enfants sont-ils invités ?</summary><p>À compléter avec les mariés.</p></details>
+      <details><summary>Où dormir après la fête ?</summary><p>Liste d'hôtels à venir. Chambres séparées non garanties.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="cadeaux">
+  <div class="inner">
+    <p class="clin">Cadeaux</p>
+    <h2>Notre lune de miel <em>vous remercie</em></h2>
+    <p>Votre présence nous suffit largement. Mais si vous tenez à nous gâter, voici nos rêves (on ne vous racontera pas tout) :</p>
+    <div class="projets">
+      <div class="projet"><div class="ico">✈️</div><h3>Le voyage</h3><p>Une escapade au soleil, à deux, téléphones éteints.</p></div>
+      <div class="projet"><div class="ico">🍷</div><h3>La cave</h3><p>Pour trinquer à chaque anniversaire.</p></div>
+      <div class="projet"><div class="ico">🫒</div><h3>Le jardin</h3><p>Un vrai olivier, en pleine terre cette fois.</p></div>
+    </div>
+    <p style="text-align:center"><a class="bouton" href="#">Participer à la cagnotte</a></p>
+
+    <div class="buffet">
+      <div>
+        <h3 style="font-size:2rem">Le grand buffet partagé</h3>
+        <p style="margin-top:.6rem">Un apéro, c'est meilleur à plusieurs. Dites-nous ce que vous apportez ou comment vous aidez !</p>
+        <a class="bouton olive" href="#">Je m'inscris</a>
+      </div>
+      <ul>
+        <li>🥧 Tartes salées <span>4 / 10</span></li>
+        <li>🍰 Desserts <span>6 / 10</span></li>
+        <li>🧀 Planchettes maison <span>2 / 8</span></li>
+        <li>🙋 Aide au service <span>3 / 6</span></li>
+      </ul>
+    </div>
+    <p style="font-size:.85rem;opacity:.7;margin-top:1rem">Les boutons ouvriront un formulaire en ligne. Les compteurs peuvent être reliés au formulaire.</p>
+  </div>
+</section>
+<div class="fanions terra" style="background-color:var(--blanc)"></div>
+
+<section id="rsvp">
+  <h2>Partant·e ?</h2>
+  <p>Réponse souhaitée avant le 1er avril</p>
+  <div class="form-card">
+    <div class="etapes-ind"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="step on"><h3>Comment vous appelez-vous ?</h3><input placeholder="Prénom et nom"><button class="bouton" onclick="suivant()">Suivant →</button></div>
+    <div class="step"><h3>Serez-vous de la fête ?</h3><div class="choix"><button onclick="suivant()">Oui, et je danse sur les tables</button><button onclick="fin(false)">Hélas, non</button></div></div>
+    <div class="step"><h3>Combien, et qu'est-ce qu'on vous sert ?</h3>
+      <select><option>1 personne</option><option>2 personnes</option><option>3 personnes</option><option>4 personnes</option></select>
+      <input style="margin-top:.8rem" placeholder="Allergies, végétarien…"><button class="bouton" onclick="suivant()">Suivant →</button></div>
+    <div class="step"><h3>Votre chanson coupable</h3><input placeholder="Celle que vous chantez sous la douche"><button class="bouton" onclick="fin(true)">Envoyer</button></div>
+    <div class="step"><h3 id="merci-titre"></h3><p id="merci-texte"></p></div>
+  </div>
+</section>
+
+<footer>Loïc &amp; Davina · Rendez-vous en juin</footer>
+
+<script>
+  let etape = 0;
+  const steps = document.querySelectorAll('.step'), ind = document.querySelectorAll('.etapes-ind i');
+  function aller(n) {
+    steps[etape].classList.remove('on'); etape = n; steps[etape].classList.add('on');
+    ind.forEach((d, i) => d.classList.toggle('on', i <= Math.min(n, 3)));
+  }
+  function suivant() { aller(etape + 1); }
+  function fin(oui) {
+    document.getElementById('merci-titre').textContent = oui ? 'Merci, on a hâte !' : 'Vous allez nous manquer';
+    document.getElementById('merci-texte').textContent = oui ? 'Prévoyez de bonnes chaussures : la piste sera chaude.' : 'Merci de nous avoir prévenus, on trinquera à votre santé.';
+    aller(steps.length - 1);
+    if (oui) confettis();
+  }
+  function confettis() {
+    const s = document.getElementById('rsvp'), c = ['#6B7042', '#FAF7F2', '#4A3426', '#E3A27F'];
+    for (let i = 0; i < 80; i++) {
+      const e = document.createElement('span');
+      e.className = 'confetti';
+      e.style.left = Math.random() * 100 + '%';
+      e.style.background = c[i % c.length];
+      e.style.animationDuration = (2 + Math.random() * 2) + 's';
+      e.style.animationDelay = Math.random() * .6 + 's';
+      s.appendChild(e);
+      setTimeout(() => e.remove(), 5000);
+    }
+  }
+  function verifier() {
+    const champ = document.getElementById('code');
+    if (champ.value.trim().toUpperCase() === 'OLIVE') document.getElementById('diner').style.display = 'block';
+    else { champ.value = ''; champ.placeholder = 'Code incorrect'; }
+  }
+</script>
+</body>
+</html>

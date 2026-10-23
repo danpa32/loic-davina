@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Loïc & Davina · Sous l'olivier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blanc: #FAF7F2; --lin: #EDE3D3; --olive: #6B7042; --olive-clair: #A3A67F;
+    --terra: #C4683F; --brun: #4A3426;
+    --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--blanc); color: var(--brun); font-family: var(--sans); font-weight: 300; line-height: 1.7; }
+  a { color: inherit; }
+  .demo { background: var(--olive); color: var(--blanc); text-align: center; font-size: .8rem; padding: .4rem 1rem; letter-spacing: .05em; }
+
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(250,247,242,.92); backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--lin); display: flex; justify-content: center; flex-wrap: wrap; gap: .3rem 1.6rem; padding: .9rem 1rem; }
+  nav a { text-decoration: none; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--olive); }
+  nav a:hover { color: var(--terra); }
+
+  section { max-width: 820px; margin: 0 auto; padding: 6rem 1.5rem; text-align: center; }
+  .sep { width: 140px; margin: 0 auto 1.4rem; color: var(--olive-clair); }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: var(--olive); }
+  h2 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: .6rem; }
+  h3 { font-size: 1.6rem; }
+  .kicker { font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; color: var(--terra); margin-bottom: .8rem; }
+  .malice { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--brun); opacity: .85; margin-top: 1.2rem; }
+  p + p { margin-top: 1rem; }
+
+  /* Accueil */
+  #accueil { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: none; }
+  .mono { width: 120px; height: 120px; border: 1px solid var(--olive); border-radius: 50%; display: grid; place-items: center;
+          font-family: var(--serif); font-size: 2.4rem; font-style: italic; color: var(--olive); margin-bottom: 2rem; }
+  #accueil h1 { font-size: clamp(3.2rem, 10vw, 6rem); line-height: 1; }
+  #accueil h1 em { color: var(--terra); font-size: .7em; }
+  .date { margin-top: 1.5rem; letter-spacing: .35em; text-transform: uppercase; font-size: .85rem; }
+
+  /* Mariés */
+  .portraits { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0; }
+  .photo { aspect-ratio: 3/4; background: linear-gradient(160deg, var(--lin), #d9cbb4); border-radius: 200px 200px 0 0;
+           display: grid; place-items: end center; padding-bottom: 1rem; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--brun); }
+  .portraits h3 { margin-top: 1rem; }
+  .frise { text-align: left; border-left: 1px solid var(--olive-clair); margin: 3rem auto 0; max-width: 520px; padding-left: 2rem; }
+  .frise li { list-style: none; position: relative; margin-bottom: 2rem; }
+  .frise li::before { content: ''; position: absolute; left: -2.33rem; top: .55rem; width: 9px; height: 9px; border-radius: 50%; background: var(--blanc); border: 1px solid var(--olive); }
+  .frise b { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--olive); display: block; }
+  .frise small { color: var(--terra); letter-spacing: .15em; text-transform: uppercase; font-size: .7rem; }
+
+  /* Lieux */
+  .cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 3rem; }
+  .carte { border: 1px solid var(--lin); padding: 2.4rem 1.6rem; background: #fff; }
+  .carte .heure { font-family: var(--serif); font-size: 2rem; color: var(--terra); }
+  .bouton { display: inline-block; margin-top: 1.4rem; padding: .75rem 1.8rem; background: var(--terra); color: var(--blanc);
+            text-decoration: none; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; border: none; cursor: pointer; font-family: var(--sans); }
+  .bouton:hover { background: var(--brun); }
+  .bouton.ligne { background: transparent; color: var(--olive); border: 1px solid var(--olive); }
+  .secret { margin-top: 2rem; }
+  .secret input { padding: .7rem 1rem; border: 1px solid var(--olive-clair); background: transparent; font-family: var(--sans); text-align: center; letter-spacing: .2em; text-transform: uppercase; }
+  .cache { display: none; }
+
+  /* Programme */
+  .prog { max-width: 460px; margin: 3rem auto 0; }
+  .prog div { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid var(--lin); text-align: left; align-items: baseline; }
+  .prog span { font-family: var(--serif); font-size: 1.5rem; color: var(--terra); text-align: right; }
+
+  /* Contacts */
+  .equipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+  .rond { width: 110px; height: 110px; border-radius: 50%; background: var(--lin); margin: 0 auto 1rem; border: 1px solid var(--olive-clair); }
+  .equipe small { display: block; color: var(--terra); letter-spacing: .15em; text-transform: uppercase; font-size: .7rem; }
+  details { text-align: left; border-bottom: 1px solid var(--lin); padding: 1rem 0; max-width: 560px; margin: 0 auto; }
+  summary { cursor: pointer; font-family: var(--serif); font-size: 1.25rem; color: var(--olive); }
+
+  /* Cadeaux & apéro */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .duo > div { background: var(--lin); padding: 3rem 2rem; }
+  .liste { list-style: none; margin-top: 1rem; }
+  .liste li::before { content: '— '; color: var(--terra); }
+
+  /* RSVP */
+  #rsvp { background: #fff; border: 1px solid var(--lin); max-width: 560px; margin-bottom: 6rem; padding: 4rem 2.5rem; }
+  form { display: grid; gap: 1.2rem; text-align: left; margin-top: 2rem; }
+  label { font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--olive); display: grid; gap: .4rem; }
+  input, select, textarea { font: inherit; font-size: 1rem; padding: .6rem 0; border: none; border-bottom: 1px solid var(--olive-clair); background: transparent; color: var(--brun); text-transform: none; letter-spacing: 0; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--terra); }
+  .radios { display: flex; gap: 1.5rem; text-transform: none; letter-spacing: 0; font-size: 1rem; color: var(--brun); }
+  form .bouton { justify-self: center; }
+  #merci { display: none; }
+
+  footer { text-align: center; padding: 3rem 1rem; font-family: var(--serif); font-style: italic; color: var(--olive); border-top: 1px solid var(--lin); }
+
+  @media (max-width: 600px) {
+    section { padding: 4rem 1rem; }
+    .portraits, .duo { grid-template-columns: 1fr; }
+    nav { gap: .3rem 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="demo">Maquette A · « Sous l'olivier » · textes et lieux fictifs</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="branche" viewBox="0 0 140 30" fill="none" stroke="currentColor" stroke-width="1">
+    <path d="M5 15 H135"/>
+    <path d="M30 15 q8 -12 18 -10 q-6 9 -18 10z M50 15 q8 12 18 10 q-6 -9 -18 -10z M70 15 q8 -12 18 -10 q-6 9 -18 10z M90 15 q8 12 18 10 q-6 -9 -18 -10z"/>
+    <circle cx="115" cy="12" r="3"/><circle cx="22" cy="18" r="3"/>
+  </symbol>
+</svg>
+
+<nav>
+  <a href="#maries">Les mariés</a><a href="#lieux">Les lieux</a><a href="#programme">Programme</a>
+  <a href="#contacts">Contacts</a><a href="#cadeaux">Cadeaux & apéro</a><a href="#rsvp">RSVP</a>
+</nav>
+
+<section id="accueil">
+  <div class="mono">L&amp;D</div>
+  <p class="kicker">Nous nous marions</p>
+  <h1>Loïc <em>&amp;</em> Davina</h1>
+  <p class="date">Juin 2027 · Lieu à venir</p>
+  <svg class="sep" style="margin-top:2.5rem" height="30"><use href="#branche"/></svg>
+  <p class="malice">«&nbsp;Venez comme vous êtes. Mais venez bien habillés.&nbsp;»</p>
+</section>
+
+<section id="maries">
+  <svg class="sep" height="30"><use href="#branche"/></svg>
+  <p class="kicker">Notre histoire</p>
+  <h2>Les mariés</h2>
+  <div class="portraits">
+    <div><div class="photo">Photo de Loïc</div><h3>Loïc</h3><p>Amateur de grandes tablées, de musique qui fait taper du pied et de soirées qui finissent tard.</p></div>
+    <div><div class="photo">Photo de Davina</div><h3>Davina</h3><p>Élégante en toutes circonstances, avec un sourire qui en dit toujours un peu plus qu'elle.</p></div>
+  </div>
+  <ul class="frise">
+    <li><small>Été 2018</small><b>La rencontre</b>Une terrasse, un ami commun, une conversation qui ne voulait pas finir.</li>
+    <li><small>Automne 2018</small><b>Le premier rendez-vous</b>Il avait réservé une table. Elle avait choisi le vin. On ne sait toujours pas qui a gagné.</li>
+    <li><small>2021</small><b>La maison</b>Un premier chez-nous, beaucoup de cartons et un olivier sur le balcon.</li>
+    <li><small>Printemps 2026</small><b>La demande</b>Un genou à terre, un oui sans hésiter.</li>
+  </ul>
+  <p class="malice">Elle prétend avoir fait le premier pas. Il prétend l'avoir laissée croire.</p>
+</section>
+
+<section id="lieux">
+  <svg class="sep" height="30"><use href="#branche"/></svg>
+  <p class="kicker">Où nous retrouver</p>
+  <h2>Les lieux</h2>
+  <div class="cartes">
+    <div class="carte">
+      <p class="kicker">Cérémonie</p><p class="heure">14h30</p><h3>Chapelle des Vignes</h3>
+      <p>Chemin de l'Exemple 1<br>1000 Quelque-Part</p><p><small>Parking à 200 m</small></p>
+      <a class="bouton" href="#">Itinéraire</a>
+    </div>
+    <div class="carte">
+      <p class="kicker">Apéritif</p><p class="heure">17h00</p><h3>Jardin du Domaine</h3>
+      <p>Route des Oliviers 12<br>1000 Quelque-Part</p><p><small>À 5 min à pied</small></p>
+      <a class="bouton" href="#">Itinéraire</a>
+    </div>
+  </div>
+  <div class="secret">
+    <p>Invité·e au dîner ? Entrez le code indiqué sur votre faire-part.</p>
+    <p style="margin-top:.8rem"><input id="code" placeholder="Code" aria-label="Code du faire-part"> <button class="bouton ligne" onclick="verifier()">Valider</button></p>
+    <p style="font-size:.8rem;opacity:.6;margin-top:.5rem">(Code de démonstration : OLIVE)</p>
+  </div>
+  <div class="cartes cache" id="diner">
+    <div class="carte" style="grid-column:1/-1">
+      <p class="kicker">Dîner</p><p class="heure">19h30</p><h3>La Grange aux Oliviers</h3>
+      <p>Chemin Secret 3<br>1000 Quelque-Part</p>
+      <p class="malice">Nous sommes ravis de vous garder un peu plus longtemps.</p>
+    </div>
+  </div>
+</section>
+
+<section id="programme">
+  <svg class="sep" height="30"><use href="#branche"/></svg>
+  <p class="kicker">Le déroulé</p>
+  <h2>Programme de la journée</h2>
+  <div class="prog">
+    <div><span>14h30</span><p>Cérémonie à la chapelle</p></div>
+    <div><span>16h00</span><p>Photos de groupe, sourires obligatoires</p></div>
+    <div><span>17h00</span><p>Apéritif dans le jardin</p></div>
+    <div><span>19h30</span><p>Dîner</p></div>
+    <div><span>22h00</span><p>Ouverture du bal</p></div>
+    <div><span>…</span><p>Jusqu'à ce que les mariés capitulent</p></div>
+  </div>
+  <p class="malice">Code vestimentaire : chic d'été. Talons plats conseillés pour le gazon.</p>
+</section>
+
+<section id="contacts">
+  <svg class="sep" height="30"><use href="#branche"/></svg>
+  <p class="kicker">Une question ?</p>
+  <h2>Contacts</h2>
+  <div class="equipe">
+    <div><div class="rond"></div><h3>Prénom Nom</h3><small>Maître de cérémonie</small><p>079 000 00 00</p></div>
+    <div><div class="rond"></div><h3>Prénom Nom</h3><small>Témoin de Loïc</small><p>079 000 00 00</p></div>
+    <div><div class="rond"></div><h3>Prénom Nom</h3><small>Témoin de Davina</small><p>079 000 00 00</p></div>
+  </div>
+  <div style="margin-top:3rem">
+    <details><summary>Les enfants sont-ils les bienvenus ?</summary><p>Réponse à compléter avec les mariés.</p></details>
+    <details><summary>Où dormir ?</summary><p>Quelques hôtels et chambres d'hôtes à proximité, liste à venir.</p></details>
+    <details><summary>Puis-je préparer une surprise ?</summary><p>Avec plaisir, mais parlez-en d'abord au maître de cérémonie.</p></details>
+  </div>
+</section>
+
+<section id="cadeaux">
+  <svg class="sep" height="30"><use href="#branche"/></svg>
+  <p class="kicker">Avec gratitude</p>
+  <h2>Cadeaux &amp; apéro</h2>
+  <div class="duo">
+    <div>
+      <h3>Cadeaux</h3>
+      <p>Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, nous rêvons d'un voyage de noces au soleil.</p>
+      <a class="bouton" href="#">Participer</a>
+    </div>
+    <div>
+      <h3>Aider pour l'apéro</h3>
+      <p>Nous avons besoin de quelques mains et de quelques douceurs :</p>
+      <ul class="liste"><li>Tartes et cakes salés</li><li>Desserts</li><li>Aide au service</li></ul>
+      <a class="bouton" href="#">Je participe</a>
+    </div>
+  </div>
+  <p style="font-size:.8rem;opacity:.6;margin-top:1rem">Les boutons ouvriront un formulaire en ligne (Tally ou Google Forms).</p>
+</section>
+
+<section id="rsvp">
+  <svg class="sep" height="30"><use href="#branche"/></svg>
+  <p class="kicker">Réponse souhaitée avant le 1er avril</p>
+  <h2>RSVP</h2>
+  <form id="form" onsubmit="event.preventDefault(); this.style.display='none'; document.getElementById('merci').style.display='block';">
+    <label>Nom et prénom<input required></label>
+    <label>Serez-vous des nôtres ?
+      <span class="radios"><span><input type="radio" name="p" checked> Avec joie</span><span><input type="radio" name="p"> À regret, non</span></span>
+    </label>
+    <label>Nombre de personnes<select><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+    <label>Régime alimentaire ou allergies<input placeholder="Végétarien, sans gluten…"></label>
+    <label>Un mot pour les mariés<textarea rows="3"></textarea></label>
+    <button class="bouton">Je serai là</button>
+  </form>
+  <div id="merci">
+    <p class="malice" style="font-size:1.6rem">Merci, à très bientôt.</p>
+    <svg class="sep" style="margin-top:1rem" height="30"><use href="#branche"/></svg>
+  </div>
+</section>
+
+<footer>Loïc &amp; Davina · Juin 2027</footer>
+
+<script>
+  function verifier() {
+    if (document.getElementById('code').value.trim().toUpperCase() === 'OLIVE') {
+      document.getElementById('diner').style.display = 'grid';
+    } else {
+      document.getElementById('code').value = '';
+      document.getElementById('code').placeholder = 'Code incorrect';
+    }
+  }
+</script>
+</body>
+</html>
